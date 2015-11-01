@@ -152,12 +152,21 @@
                                     <action selector="chipmuckAudioPressed:" destination="Sgi-MO-deA" eventType="touchUpInside" id="BqC-LQ-ITf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxh-Xq-JDj">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="darthvader"/>
+                                <connections>
+                                    <action selector="darthVaderAudioPressed:" destination="Sgi-MO-deA" eventType="touchUpInside" id="kr4-05-Fij"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gcf-Xv-Spd" firstAttribute="top" secondItem="ld4-mw-XGS" secondAttribute="bottom" constant="30" id="7Ct-Dy-M4Y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aQd-JF-3MT" secondAttribute="trailing" constant="25" id="D6A-hm-HfM"/>
                             <constraint firstItem="iZ9-ZI-3Zk" firstAttribute="top" secondItem="AL8-LV-qLc" secondAttribute="bottom" constant="25" id="MoT-4h-G8f"/>
+                            <constraint firstItem="gcf-Xv-Spd" firstAttribute="top" secondItem="pxh-Xq-JDj" secondAttribute="bottom" constant="150" id="NgR-Ko-0Bg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pxh-Xq-JDj" secondAttribute="trailing" constant="25" id="VvF-bB-HaK"/>
                             <constraint firstItem="aQd-JF-3MT" firstAttribute="top" secondItem="AL8-LV-qLc" secondAttribute="bottom" constant="25" id="hyn-jI-qz9"/>
                             <constraint firstItem="gcf-Xv-Spd" firstAttribute="top" secondItem="GoM-0f-M4F" secondAttribute="bottom" constant="150" id="iqp-Vh-dLf"/>
                             <constraint firstItem="GoM-0f-M4F" firstAttribute="leading" secondItem="u0y-hM-Cte" secondAttribute="leadingMargin" constant="25" id="s59-Up-XUy"/>
@@ -170,6 +179,7 @@
                                 <exclude reference="aQd-JF-3MT"/>
                                 <exclude reference="ld4-mw-XGS"/>
                                 <exclude reference="GoM-0f-M4F"/>
+                                <exclude reference="pxh-Xq-JDj"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="MoT-4h-G8f"/>
@@ -177,8 +187,10 @@
                                 <exclude reference="D6A-hm-HfM"/>
                                 <exclude reference="hyn-jI-qz9"/>
                                 <exclude reference="s59-Up-XUy"/>
+                                <exclude reference="VvF-bB-HaK"/>
                                 <exclude reference="yDh-5Q-nKH"/>
                                 <exclude reference="7Ct-Dy-M4Y"/>
+                                <exclude reference="NgR-Ko-0Bg"/>
                                 <exclude reference="iqp-Vh-dLf"/>
                             </mask>
                         </variation>
@@ -188,6 +200,7 @@
                                 <include reference="aQd-JF-3MT"/>
                                 <include reference="ld4-mw-XGS"/>
                                 <include reference="GoM-0f-M4F"/>
+                                <include reference="pxh-Xq-JDj"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="MoT-4h-G8f"/>
@@ -195,8 +208,10 @@
                                 <include reference="D6A-hm-HfM"/>
                                 <include reference="hyn-jI-qz9"/>
                                 <include reference="s59-Up-XUy"/>
+                                <include reference="VvF-bB-HaK"/>
                                 <include reference="yDh-5Q-nKH"/>
                                 <include reference="7Ct-Dy-M4Y"/>
+                                <include reference="NgR-Ko-0Bg"/>
                                 <include reference="iqp-Vh-dLf"/>
                             </mask>
                         </variation>
@@ -227,6 +242,7 @@
     </scenes>
     <resources>
         <image name="chipmuck" width="100" height="100"/>
+        <image name="darthvader" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
         <image name="rabbit" width="100" height="100"/>
         <image name="snail" width="100" height="100"/>
