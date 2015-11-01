@@ -3,13 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Record-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PitchPerfect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RecordSoundsViewController" customModule="PitchPerfect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -52,7 +53,6 @@
                                 <state key="normal" image="stop"/>
                                 <connections>
                                     <action selector="stopPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rch-pN-O3j"/>
-                                    <segue destination="Sgi-MO-deA" kind="show" id="grS-xh-qPX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -76,12 +76,12 @@
                                 <exclude reference="2wm-GY-MVP"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="5vf-aI-B3j"/>
+                                <exclude reference="ner-xy-bI9"/>
                                 <exclude reference="Dg3-7y-4wA"/>
                                 <exclude reference="MWh-xZ-Brv"/>
                                 <exclude reference="Jbh-6O-BRQ"/>
                                 <exclude reference="PgY-jn-P6I"/>
-                                <exclude reference="ner-xy-bI9"/>
-                                <exclude reference="5vf-aI-B3j"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -91,12 +91,12 @@
                                 <include reference="2wm-GY-MVP"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="5vf-aI-B3j"/>
+                                <include reference="ner-xy-bI9"/>
                                 <include reference="Dg3-7y-4wA"/>
                                 <include reference="MWh-xZ-Brv"/>
                                 <include reference="Jbh-6O-BRQ"/>
                                 <include reference="PgY-jn-P6I"/>
-                                <include reference="ner-xy-bI9"/>
-                                <include reference="5vf-aI-B3j"/>
                             </mask>
                         </variation>
                     </view>
@@ -105,6 +105,7 @@
                         <outlet property="recordButton" destination="aBd-ID-gjF" id="s1F-cn-yjc"/>
                         <outlet property="recordingLabel" destination="Gbh-e3-DfL" id="6Lp-5R-WOt"/>
                         <outlet property="stopButton" destination="2wm-GY-MVP" id="QAj-Mj-g2F"/>
+                        <segue destination="Sgi-MO-deA" kind="show" identifier="stopRecording" id="ACk-nk-Iul"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -120,6 +121,7 @@
                         <viewControllerLayoutGuide type="bottom" id="gcf-Xv-Spd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="u0y-hM-Cte">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZ9-ZI-3Zk">
@@ -160,12 +162,12 @@
                                 <exclude reference="ld4-mw-XGS"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="MoT-4h-G8f"/>
-                                <exclude reference="t8c-0c-U9C"/>
+                                <exclude reference="7Ct-Dy-M4Y"/>
                                 <exclude reference="D6A-hm-HfM"/>
                                 <exclude reference="hyn-jI-qz9"/>
+                                <exclude reference="MoT-4h-G8f"/>
+                                <exclude reference="t8c-0c-U9C"/>
                                 <exclude reference="yDh-5Q-nKH"/>
-                                <exclude reference="7Ct-Dy-M4Y"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -175,12 +177,12 @@
                                 <include reference="ld4-mw-XGS"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="MoT-4h-G8f"/>
-                                <include reference="t8c-0c-U9C"/>
+                                <include reference="7Ct-Dy-M4Y"/>
                                 <include reference="D6A-hm-HfM"/>
                                 <include reference="hyn-jI-qz9"/>
+                                <include reference="MoT-4h-G8f"/>
+                                <include reference="t8c-0c-U9C"/>
                                 <include reference="yDh-5Q-nKH"/>
-                                <include reference="7Ct-Dy-M4Y"/>
                             </mask>
                         </variation>
                     </view>
@@ -206,22 +208,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wyx-NX-VKK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="344" y="-266.25"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Ulq-cF-ZZI">
-            <objects>
-                <viewController id="6BC-kt-Uzv" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="JcF-Cb-bh9"/>
-                        <viewControllerLayoutGuide type="bottom" id="DBS-Ue-XgT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8W5-bk-E1W">
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kkh-53-s5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>
