@@ -69,6 +69,10 @@ class PlaySoundsViewController: UIViewController {
         self.playAudioAt(2.0)
     }
     
+    @IBAction func chipmuckAudioPressed(sender: UIButton) {
+        
+    }
+    
     @IBAction func stopPressed(sender: UIButton) {
         print("Stop button pressed");
         audioPlayer.stop()
