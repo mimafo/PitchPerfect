@@ -15,6 +15,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     
+    let RecordingString = "Recording..."
+    let TapInstructionString = "Tap to Record"
+    
     //Declared Globally
     var audioRecorder:AVAudioRecorder!
     var recordedAudio:RecordedAudio!
@@ -27,6 +30,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func viewWillAppear(animated: Bool) {
         self.stopButton.hidden = true;
+        self.recordingLabel.text = self.TapInstructionString
+        self.recordButton.enabled = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +42,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
     @IBAction func stopPressed(sender: UIButton) {
 
-        //First, hide the stop button
+        //First, hide the stop button to prevent double tapping
         self.stopButton.hidden = true
         
         //Now, Stop the audio recording
@@ -45,24 +50,20 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
         
-        //Hide the recording label and enable the record button
-        self.recordingLabel.hidden = true
-        self.recordButton.enabled = true
-        
         print("Recording has been stopped")
         
     }
     
     @IBAction func recordAudioPressed(sender: UIButton) {
         
-        //Disable the recording button first
+        //Disable the recording button first to prevent double tapping
         self.recordButton.enabled = false
         
         //Now lets start recording sounds
         self.recordSounds()
 
-        //Once recording has started, show the recording label and stop button
-        self.recordingLabel.hidden = false
+        //Once recording has started, display the recording string and stop button
+        self.recordingLabel.text = self.RecordingString
         self.stopButton.hidden = false
     
         print("In recordAudioPressed")
@@ -73,12 +74,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         if (flag) {
             
-            //TODO: Step 1 - save the recorded audio file
-            self.recordedAudio = RecordedAudio()
-            self.recordedAudio.filePathUrl = recorder.url
-            self.recordedAudio.title = recorder.url.lastPathComponent
+            //Step 1 - save the recorded audio file
+            self.recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
         
-            //TODO: Step 2 - Move to the next scene (perform segue)
+            //Step 2 - Move to the next scene (perform segue)
             self.performSegueWithIdentifier("stopRecording", sender: self.recordedAudio)
             
         } else {
@@ -116,5 +115,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.record()
 
     }
+
 }
 

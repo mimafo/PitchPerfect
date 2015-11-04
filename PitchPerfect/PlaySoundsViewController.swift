@@ -11,7 +11,6 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
 
-    var audioPlayer:AVAudioPlayer!
     var receivedAudio:RecordedAudio!
     
     var audioEngine:AVAudioEngine!
@@ -21,12 +20,9 @@ class PlaySoundsViewController: UIViewController {
         super.viewDidLoad()
         
         do {
-            audioPlayer = try AVAudioPlayer(contentsOfURL: self.receivedAudio.filePathUrl)
-            audioPlayer.enableRate = true
             
             audioEngine = AVAudioEngine()
-            audioFile = try! AVAudioFile(forReading: receivedAudio.filePathUrl)
-            
+            audioFile = try AVAudioFile(forReading: receivedAudio.filePathUrl)
             
         } catch {
             print("Audio file could not be initialized")
@@ -53,55 +49,54 @@ class PlaySoundsViewController: UIViewController {
 
     @IBAction func slowPressed(sender: UIButton) {
         print("Slow button pressed");
-        self.playAudioAt(0.5)
+        self.playAudioWithRate(0.5, pitch: 0)
     }
     
     @IBAction func fastPressed(sender: UIButton) {
         print("Fast button pressed");
-        self.playAudioAt(2.0)
+        self.playAudioWithRate(2.0, pitch: 0)
     }
     
     @IBAction func chipmuckAudioPressed(sender: UIButton) {
-        self.playAudioWithVariablePitch(1000)
+        print("Chipmuck button pressed");
+        self.playAudioWithRate(1.0, pitch: 1000)
     }
     
     @IBAction func darthVaderAudioPressed(sender: UIButton) {
-        self.playAudioWithVariablePitch(-999)
+        print("Darth Vader button pressed");
+        self.playAudioWithRate(1.0, pitch: -1000)
     }
     
     @IBAction func stopPressed(sender: UIButton) {
         print("Stop button pressed");
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        self.stopAudioEngine()
     }
     
-    private func playAudioAt(rate: Float) {
-        audioPlayer.stop()
-        audioPlayer.currentTime = 0
-        audioPlayer.rate = rate
-        audioPlayer.play()
+    private func stopAudioEngine() {
+        self.audioEngine.stop()
+        self.audioEngine.reset()
     }
     
-    private func playAudioWithVariablePitch(pitch: Float) {
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+    private func playAudioWithRate(rate: Float, pitch: Float) {
+        self.stopAudioEngine()
         
         let audioPlayerNode = AVAudioPlayerNode()
-        audioEngine.attachNode(audioPlayerNode)
+        self.audioEngine.attachNode(audioPlayerNode)
         
+        //Change the pitch of the audio
         let changePitchEffect = AVAudioUnitTimePitch()
         changePitchEffect.pitch = pitch
-        audioEngine.attachNode(changePitchEffect)
+        changePitchEffect.rate = rate
+        self.audioEngine.attachNode(changePitchEffect)
         
-        audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
-        audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
+        self.audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
+        self.audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-        try! audioEngine.start()
+        try! self.audioEngine.start()
         
         audioPlayerNode.play()
         
     }
+    
 }
