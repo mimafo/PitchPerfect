@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mbd-c9-4Rv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mbd-c9-4Rv">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -75,12 +76,12 @@
                                 <exclude reference="Gbh-e3-DfL"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="5vf-aI-B3j"/>
+                                <exclude reference="ner-xy-bI9"/>
                                 <exclude reference="Dg3-7y-4wA"/>
                                 <exclude reference="MWh-xZ-Brv"/>
                                 <exclude reference="Wv3-jX-Q0t"/>
                                 <exclude reference="vl6-00-okS"/>
-                                <exclude reference="ner-xy-bI9"/>
-                                <exclude reference="5vf-aI-B3j"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -90,12 +91,12 @@
                                 <include reference="Gbh-e3-DfL"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="5vf-aI-B3j"/>
+                                <include reference="ner-xy-bI9"/>
                                 <include reference="Dg3-7y-4wA"/>
                                 <include reference="MWh-xZ-Brv"/>
                                 <include reference="Wv3-jX-Q0t"/>
                                 <include reference="vl6-00-okS"/>
-                                <include reference="ner-xy-bI9"/>
-                                <include reference="5vf-aI-B3j"/>
                             </mask>
                         </variation>
                     </view>
@@ -181,16 +182,16 @@
                                 <exclude reference="iZ9-ZI-3Zk"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="MoT-4h-G8f"/>
-                                <exclude reference="t8c-0c-U9C"/>
-                                <exclude reference="D6A-hm-HfM"/>
-                                <exclude reference="hyn-jI-qz9"/>
-                                <exclude reference="s59-Up-XUy"/>
-                                <exclude reference="VvF-bB-HaK"/>
-                                <exclude reference="yDh-5Q-nKH"/>
                                 <exclude reference="7Ct-Dy-M4Y"/>
                                 <exclude reference="NgR-Ko-0Bg"/>
                                 <exclude reference="iqp-Vh-dLf"/>
+                                <exclude reference="s59-Up-XUy"/>
+                                <exclude reference="D6A-hm-HfM"/>
+                                <exclude reference="hyn-jI-qz9"/>
+                                <exclude reference="MoT-4h-G8f"/>
+                                <exclude reference="t8c-0c-U9C"/>
+                                <exclude reference="yDh-5Q-nKH"/>
+                                <exclude reference="VvF-bB-HaK"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -202,16 +203,16 @@
                                 <include reference="iZ9-ZI-3Zk"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="MoT-4h-G8f"/>
-                                <include reference="t8c-0c-U9C"/>
-                                <include reference="D6A-hm-HfM"/>
-                                <include reference="hyn-jI-qz9"/>
-                                <include reference="s59-Up-XUy"/>
-                                <include reference="VvF-bB-HaK"/>
-                                <include reference="yDh-5Q-nKH"/>
                                 <include reference="7Ct-Dy-M4Y"/>
                                 <include reference="NgR-Ko-0Bg"/>
                                 <include reference="iqp-Vh-dLf"/>
+                                <include reference="s59-Up-XUy"/>
+                                <include reference="D6A-hm-HfM"/>
+                                <include reference="hyn-jI-qz9"/>
+                                <include reference="MoT-4h-G8f"/>
+                                <include reference="t8c-0c-U9C"/>
+                                <include reference="yDh-5Q-nKH"/>
+                                <include reference="VvF-bB-HaK"/>
                             </mask>
                         </variation>
                     </view>
