@@ -14,7 +14,6 @@
 		27B172F81BE05B9000CD540B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27B172F71BE05B9000CD540B /* Assets.xcassets */; };
 		27B172FB1BE05B9000CD540B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27B172F91BE05B9000CD540B /* LaunchScreen.storyboard */; };
 		27B173031BE43AC900CD540B /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B173021BE43AC900CD540B /* PlaySoundsViewController.swift */; };
-		27B173051BE45EB800CD540B /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27B173041BE45EB800CD540B /* movie_quote.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		27B172FA1BE05B9000CD540B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27B172FC1BE05B9000CD540B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27B173021BE43AC900CD540B /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
-		27B173041BE45EB800CD540B /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = movie_quote.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +63,6 @@
 				279A2F1E1BE65B6400BA94DE /* RecordedAudio.swift */,
 				27B173021BE43AC900CD540B /* PlaySoundsViewController.swift */,
 				27B172F41BE05B9000CD540B /* Main.storyboard */,
-				27B173041BE45EB800CD540B /* movie_quote.mp3 */,
 				27B172F71BE05B9000CD540B /* Assets.xcassets */,
 				27B172F91BE05B9000CD540B /* LaunchScreen.storyboard */,
 				27B172FC1BE05B9000CD540B /* Info.plist */,
@@ -134,7 +131,6 @@
 			files = (
 				27B172FB1BE05B9000CD540B /* LaunchScreen.storyboard in Resources */,
 				27B172F81BE05B9000CD540B /* Assets.xcassets in Resources */,
-				27B173051BE45EB800CD540B /* movie_quote.mp3 in Resources */,
 				27B172F61BE05B9000CD540B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
