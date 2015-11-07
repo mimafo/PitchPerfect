@@ -37,7 +37,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.changeState(RecordingState.Initial)
+        changeState(RecordingState.Initial)
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,31 +49,31 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func pausePressed(sender: UIButton) {
         
         //First, update UI to pausing state
-        self.changeState(RecordingState.Pausing)
+        changeState(RecordingState.Pausing)
         
         //Pause the recording
-        self.audioRecorder.pause();
+        audioRecorder.pause();
         
         //Set the state to the paused state
-        self.changeState(RecordingState.Paused)
+        changeState(RecordingState.Paused)
         
     }
     
     @IBAction func resumePressed(sender: UIButton) {
         //Disable the recording button first to prevent double tapping
-        self.changeState(RecordingState.Recording)
+        changeState(RecordingState.Recording)
         
         //Now lets start recording sounds
-        self.audioRecorder.record()
+        audioRecorder.record()
         
         //Once recording has started, change the state of the UI
-        self.changeState(RecordingState.Record)
+        changeState(RecordingState.Record)
     }
     
     @IBAction func stopPressed(sender: UIButton) {
 
         //First, hide the stop button to prevent double tapping
-        self.changeState(RecordingState.Stopping)
+        changeState(RecordingState.Stopping)
         
         //Now, Stop the audio recording
         audioRecorder.stop()
@@ -87,13 +87,13 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func recordAudioPressed(sender: UIButton) {
         
         //Disable the recording button first to prevent double tapping
-        self.changeState(RecordingState.Recording)
+        changeState(RecordingState.Recording)
         
         //Now lets start recording sounds
-        self.recordSounds()
+        recordSounds()
 
         //Once recording has started, change the state of the UI
-        self.changeState(RecordingState.Record)
+        changeState(RecordingState.Record)
     
         print("In recordAudioPressed")
         
@@ -104,10 +104,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         if (flag) {
             
             //Step 1 - save the recorded audio file
-            self.recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
+            recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
         
             //Step 2 - Move to the next scene (perform segue)
-            self.performSegueWithIdentifier("stopRecording", sender: self.recordedAudio)
+            performSegueWithIdentifier("stopRecording", sender: self.recordedAudio)
             
         } else {
             
@@ -137,11 +137,11 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         let session = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
         
-        try! self.audioRecorder = AVAudioRecorder(URL: filePath!, settings: [:])
-        self.audioRecorder.delegate = self
-        self.audioRecorder.meteringEnabled = true
-        self.audioRecorder.prepareToRecord()
-        self.audioRecorder.record()
+        try! audioRecorder = AVAudioRecorder(URL: filePath!, settings: [:])
+        audioRecorder.delegate = self
+        audioRecorder.meteringEnabled = true
+        audioRecorder.prepareToRecord()
+        audioRecorder.record()
 
     }
     
@@ -150,35 +150,35 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         switch state {
         case .Initial:
             //Initialize the UI
-            self.stopButton.hidden = true
-            self.pauseButton.hidden = true
-            self.resumeButton.hidden = true
-            self.recordingLabel.text = self.TapInstructionString
-            self.recordButton.enabled = true
+            stopButton.hidden = true
+            pauseButton.hidden = true
+            resumeButton.hidden = true
+            recordingLabel.text = self.TapInstructionString
+            recordButton.enabled = true
         case .Recording:
             //In the process of Recording
-            self.recordButton.enabled = false
+            recordButton.enabled = false
         case .Record:
             //Record has started
-            self.recordingLabel.text = self.RecordingString
-            self.stopButton.hidden = false
-            self.pauseButton.hidden = false
-            self.resumeButton.hidden = false
+            recordingLabel.text = self.RecordingString
+            stopButton.hidden = false
+            pauseButton.hidden = false
+            resumeButton.hidden = false
             //Enable buttons properly
-            self.pauseButton.enabled = true
-            self.resumeButton.enabled = false
+            pauseButton.enabled = true
+            resumeButton.enabled = false
         case .Pausing:
             //In the process of pausing
-            self.pauseButton.enabled = false
+            pauseButton.enabled = false
         case .Paused:
             //Record is paused
-            self.recordingLabel.text = self.PauseString
-            self.resumeButton.enabled = true
+            recordingLabel.text = self.PauseString
+            resumeButton.enabled = true
         case .Stopping:
             //In the process of stopping the recording
-            self.stopButton.hidden = true
-            self.pauseButton.hidden = true
-            self.resumeButton.hidden = true
+            stopButton.hidden = true
+            pauseButton.hidden = true
+            resumeButton.hidden = true
         default:
             print("Unhandled case for RecordingState")
         }

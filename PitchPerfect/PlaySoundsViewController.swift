@@ -34,66 +34,54 @@ class PlaySoundsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
 
     @IBAction func slowPressed(sender: UIButton) {
         print("Slow button pressed");
-        self.playAudioWithRate(0.5, pitch: 0)
+        playAudioWithRate(0.5, pitch: 0)
     }
     
     @IBAction func fastPressed(sender: UIButton) {
         print("Fast button pressed");
-        self.playAudioWithRate(2.0, pitch: 0)
+        playAudioWithRate(2.0, pitch: 0)
     }
     
     @IBAction func chipmuckAudioPressed(sender: UIButton) {
         print("Chipmuck button pressed");
-        self.playAudioWithRate(1.0, pitch: 1000)
+        playAudioWithRate(1.0, pitch: 1000)
     }
     
     @IBAction func darthVaderAudioPressed(sender: UIButton) {
         print("Darth Vader button pressed");
-        self.playAudioWithRate(1.0, pitch: -1000)
+        playAudioWithRate(1.0, pitch: -1000)
     }
     
     @IBAction func stopPressed(sender: UIButton) {
         print("Stop button pressed");
-        self.stopAudioEngine()
+        stopAudioEngine()
     }
     
     private func stopAudioEngine() {
-        self.audioEngine.stop()
-        self.audioEngine.reset()
+        audioEngine.stop()
+        audioEngine.reset()
     }
     
     private func playAudioWithRate(rate: Float, pitch: Float) {
-        self.stopAudioEngine()
+        stopAudioEngine()
         
         let audioPlayerNode = AVAudioPlayerNode()
-        self.audioEngine.attachNode(audioPlayerNode)
+        audioEngine.attachNode(audioPlayerNode)
         
         //Change the pitch of the audio
         let changePitchEffect = AVAudioUnitTimePitch()
         changePitchEffect.pitch = pitch
         changePitchEffect.rate = rate
-        self.audioEngine.attachNode(changePitchEffect)
+        audioEngine.attachNode(changePitchEffect)
         
-        self.audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
-        self.audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
+        audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
+        audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-        try! self.audioEngine.start()
+        try! audioEngine.start()
         
         audioPlayerNode.play()
         
