@@ -24,6 +24,10 @@ class PlaySoundsViewController: UIViewController {
             audioEngine = AVAudioEngine()
             audioFile = try AVAudioFile(forReading: receivedAudio.filePathUrl)
             
+            let session = AVAudioSession.sharedInstance()
+            try session.overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker)
+            
+            
         } catch {
             print("Audio file could not be initialized")
         }
@@ -76,6 +80,7 @@ class PlaySoundsViewController: UIViewController {
         changePitchEffect.pitch = pitch
         changePitchEffect.rate = rate
         audioEngine.attachNode(changePitchEffect)
+        
         
         audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
         audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
