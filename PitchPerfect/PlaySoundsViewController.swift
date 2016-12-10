@@ -22,10 +22,10 @@ class PlaySoundsViewController: UIViewController {
         do {
             
             audioEngine = AVAudioEngine()
-            audioFile = try AVAudioFile(forReading: receivedAudio.filePathUrl)
+            audioFile = try AVAudioFile(forReading: receivedAudio.filePathUrl as URL)
             
             let session = AVAudioSession.sharedInstance()
-            try session.overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker)
+            try session.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
             
             
         } catch {
@@ -39,53 +39,53 @@ class PlaySoundsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func slowPressed(sender: UIButton) {
+    @IBAction func slowPressed(_ sender: UIButton) {
         print("Slow button pressed");
         playAudioWithRate(0.5, pitch: 0)
     }
     
-    @IBAction func fastPressed(sender: UIButton) {
+    @IBAction func fastPressed(_ sender: UIButton) {
         print("Fast button pressed");
         playAudioWithRate(2.0, pitch: 0)
     }
     
-    @IBAction func chipmuckAudioPressed(sender: UIButton) {
+    @IBAction func chipmuckAudioPressed(_ sender: UIButton) {
         print("Chipmuck button pressed");
         playAudioWithRate(1.0, pitch: 1000)
     }
     
-    @IBAction func darthVaderAudioPressed(sender: UIButton) {
+    @IBAction func darthVaderAudioPressed(_ sender: UIButton) {
         print("Darth Vader button pressed");
         playAudioWithRate(1.0, pitch: -1000)
     }
     
-    @IBAction func stopPressed(sender: UIButton) {
+    @IBAction func stopPressed(_ sender: UIButton) {
         print("Stop button pressed");
         stopAudioEngine()
     }
     
-    private func stopAudioEngine() {
+    fileprivate func stopAudioEngine() {
         audioEngine.stop()
         audioEngine.reset()
     }
     
-    private func playAudioWithRate(rate: Float, pitch: Float) {
+    fileprivate func playAudioWithRate(_ rate: Float, pitch: Float) {
         stopAudioEngine()
         
         let audioPlayerNode = AVAudioPlayerNode()
-        audioEngine.attachNode(audioPlayerNode)
+        audioEngine.attach(audioPlayerNode)
         
         //Change the pitch of the audio
         let changePitchEffect = AVAudioUnitTimePitch()
         changePitchEffect.pitch = pitch
         changePitchEffect.rate = rate
-        audioEngine.attachNode(changePitchEffect)
+        audioEngine.attach(changePitchEffect)
         
         
         audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
         audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
         
-        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        audioPlayerNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
         try! audioEngine.start()
         
         audioPlayerNode.play()
