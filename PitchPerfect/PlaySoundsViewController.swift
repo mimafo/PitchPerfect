@@ -25,7 +25,7 @@ class PlaySoundsViewController: UIViewController {
             audioFile = try AVAudioFile(forReading: receivedAudio.filePathUrl as URL)
             
             let session = AVAudioSession.sharedInstance()
-            try session.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+            try session.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
             
             
         } catch {
